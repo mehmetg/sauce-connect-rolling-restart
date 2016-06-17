@@ -4,8 +4,7 @@
   "description": "Simple cli tool to start and stop Sauce Connect instances. Rolling restarts are also available.",
   "main": "sc_ha.js",
   "scripts": {
-    "test": "test",
-    "start": "sc_run.js"
+    "start": "node sc_run.js"
   },
   "keywords": [
     "sauce",
@@ -13,6 +12,10 @@
     "sauceconnect",
     "sc"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mehmetg/sauce-connect-rolling-restart"
+  },
   "author": "Mehmet Gerceker",
   "license": "MIT",
   "dependencies" :{
@@ -20,6 +23,5 @@
     "extend": "*",
     "async": "*",
     "jsonfile": "*"
-
   }
 }

@@ -108,7 +108,7 @@ function startTunnels(startPort, numTunnels) {
                         optionsTemplate['readyFileId'] = port.toString();
                         optionsTemplate['pidfile'] = path.resolve(tempPath, port.toString() + '.pid');
                         startSauceConnect(optionsTemplate).then(function (p) {
-                            console.log(p);
+                            //console.log(p);
                             tunnelInfo.push({pid: p.pid, port: port});
                             p.unref();
                             port++;
@@ -147,16 +147,16 @@ function stopTunnels(fromFile) {
             if(fromFile) {
                 tunnelInfo = tunnelData;
             }
-            console.log('+++++++');
-            console.log(tunnelInfo);
-            console.log('+++++++');
+            //console.log('+++++++');
+            //console.log(tunnelInfo);
+            //console.log('+++++++');
             async.whilst(
                 function () {
                     return tunnelInfo.length > 0;
                 },
                 function (next) {
                     var tunnelDatum = tunnelInfo.pop();
-                    console.log(tunnelInfo);
+                    //console.log(tunnelInfo);
                     var pidFile = path.resolve(tempPath, tunnelDatum['pid'] + '.pid');
                     try {
                         process.kill(tunnelDatum['pid'], 'SIGTERM');
@@ -181,9 +181,9 @@ function getStartPort() {
         var upperLimit = 0;
         readTunnels().then(function (tunnelData) {
             tunnelInfo = extend(true, [], tunnelData);
-            console.log('----');
-            console.log(tunnelInfo);
-            console.log('----');
+            //console.log('----');
+            //console.log(tunnelInfo);
+            //console.log('----');
             if (tunnelData.length > 0) {
                 tunnelData.forEach(function (item, index) {
                     if (item['port'] > upperLimit) {
@@ -226,7 +226,7 @@ if (process.argv[2] === 'start') {
     //kill existing tunnels.
     //clean up pid files
     getStartPort().then(function (port) {
-        console.log(port);
+        //console.log(port);
         startTunnels(port, NUMBER_OF_TUNNELS).then(function (e) {
             console.log("New tunnels successfully launched!");
             stopTunnels(false).then(function (r) {
