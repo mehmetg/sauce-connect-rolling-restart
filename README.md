@@ -16,8 +16,10 @@ Ask here and I'll answer when I can, if not support@saucelabs.com is the best pl
 
 ###Set Credentials:
 Either export to shell using: 
-```> export SAUCE_USERNAME=<username>```
-```> export SAUCE_ACCESS_KEY=<access key>```
+```
+> export SAUCE_USERNAME=<username>
+> export SAUCE_ACCESS_KEY=<access key>
+```
 or set it in the ```optionsTemplate``` configuration blob.
 
 ###Port and Tunnel Numbers:
