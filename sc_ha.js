@@ -160,6 +160,8 @@ function stopTunnels(fromFile) {
                     var pidFile = path.resolve(tempPath, tunnelDatum['pid'] + '.pid');
                     try {
                         process.kill(tunnelDatum['pid'], 'SIGTERM');
+                        //this may kill tunnels that are waiting for tests to finish.
+                        //Remove the if statement and contents as needed.
                         if (path.existsSync('foo.txt')) {
                             tunnelData.push(tunnelDatum);
                         }
