@@ -12,6 +12,7 @@ var tunnelInfo;
 const MAX_PORT = 5000;
 const MIN_PORT = 4500;
 const NUMBER_OF_TUNNELS = 2;
+const SAUCE_CONNECT_VERSION = '4.3.16';
 
 var optionsTemplate = {
 
@@ -138,9 +139,6 @@ function readTunnels() {
         }
     });
 }
-function termTunnels(tunnelData) {
-
-}
 function stopTunnels(fromFile) {
     return new Promise(function (resolve, reject) {
         readTunnels().then(function (tunnelData) {
@@ -203,6 +201,8 @@ function getStartPort() {
         })
     })
 }
+
+process.env.SAUCE_CONNECT_VERSION = SAUCE_CONNECT_VERSION;
 
 if (process.argv[2] === 'start') {
     startTunnels(MIN_PORT, NUMBER_OF_TUNNELS).then(function (e) {
